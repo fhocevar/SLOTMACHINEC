@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define NUM_FRUTAS 5
+
+// Função para gerar uma fruta aleatória
+const char* getFruta(int indice) {
+    switch (indice) {
+        case 0: return "🍒"; // Cereja
+        case 1: return "🍋"; // Limão
+        case 2: return "🍉"; // Melancia
+        case 3: return "🍊"; // Laranja
+        case 4: return "🍎"; // Maçã
+        default: return "";
+    }
+}
+
+// Função que simula o jogo de caça-níqueis
+void jogar() {
+    int i;
+    int frutas[3];
+    int premio = 0;
+    
+    // Gera números aleatórios para as frutas
+    for (i = 0; i < 3; i++) {
+        frutas[i] = rand() % NUM_FRUTAS; // Gera um número aleatório de 0 a 4
+    }
+
+    // Exibe as frutas "girando"
+    printf("Girando...\n");
+    for (i = 0; i < 3; i++) {
+        printf("[%s] ", getFruta(frutas[i]));
+    }
+    printf("\n");
+
+    // Verifica se as frutas são iguais
+    if (frutas[0] == frutas[1] && frutas[1] == frutas[2]) {
+        printf("Você ganhou! Três %s!\n", getFruta(frutas[0]));
+        premio = 100; // Exemplo de prêmio (você pode mudar o valor)
+    } else {
+        printf("Que pena! Tente novamente.\n");
+    }
+
+    // Exibe o prêmio, se houver
+    if (premio > 0) {
+        printf("Prêmio: %d moedas!\n", premio);
+    }
+}
+
+int main() {
+    // Inicializa o gerador de números aleatórios
+    srand(time(0));
+
+    char escolha;
+
+    printf("Bem-vindo à Máquina de Frutas! (Simulação de Slot Machine)\n");
+
+    // Loop do jogo
+    do {
+        printf("\nPressione [Enter] para girar a alavanca ou 'q' para sair...\n");
+        escolha = getchar();
+        getchar(); // Para consumir o caractere '\n' da entrada anterior
+
+        if (escolha != 'q') {
+            jogar();
+        }
+    } while (escolha != 'q');
+
+    printf("Obrigado por jogar! Até logo!\n");
+
+    return 0;
+}
