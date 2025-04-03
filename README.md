@@ -1,4 +1,4 @@
-# Máquina de Frutas (Slot Machine)
+# Slot Machine (Máquina de Fruta)
 
 Este é um jogo simples de *Slot Machine* inspirado em máquinas de caça-níqueis de cassino, onde o jogador pode girar a alavanca para gerar 3 frutas aleatórias. Se todas as frutas forem iguais, o jogador ganha um prêmio!
 
